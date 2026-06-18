@@ -27,6 +27,15 @@ OG_IMAGE = SITE_URL + "/assets/og-image.png"
 CITY, STATE, ZIP = "Warrenville", "IL", "60555"
 LAT, LON = "41.8186", "-88.1762"
 
+# --- analytics + search-engine verification (fill in once you have the codes) ---
+GA4_ID = ""          # GA4 Measurement ID, e.g. "G-XXXXXXXXXX"
+GSC_VERIFY = ""      # Google Search Console <meta> token (optional; DNS TXT also works)
+BING_VERIFY = ""     # Bing Webmaster Tools <meta> token (optional)
+
+# --- the funnel target (Sound & Fury) ---
+SF_URL = "https://soundandfuryprint.com"
+SF_NAME = "Sound & Fury Print Shop"
+
 def load(name):
     with open(os.path.join(DATA, name), encoding="utf-8") as f:
         return json.load(f)
@@ -50,6 +59,15 @@ def A(s):
 
 def canon(path):
     return SITE_URL + "/" + path if path else SITE_URL + "/"
+
+def utm(url, content):
+    """Tag Sound & Fury links so the Warrenville Proud -> Sound & Fury funnel shows up in GA4.
+    Non-Sound-&-Fury links are returned unchanged."""
+    if "soundandfuryprint.com" not in url:
+        return url
+    sep = "&" if "?" in url else "?"
+    return (f"{url}{sep}utm_source=warrenvilleproud&utm_medium=referral"
+            f"&utm_campaign=sponsorship&utm_content={content}")
 
 def jsonld(obj):
     return ('<script type="application/ld+json">'
@@ -116,17 +134,26 @@ def events_itemlist(events):
 def ribbon(sp):
     f = sp["founding"]
     return (f'<div class="ribbon">Founding sponsor: '
-            f'<a href="{A(f["url"])}">{A(f["name"])}</a> . {A(f["short"])}</div>')
+            f'<a href="{A(utm(f["url"], "ribbon"))}">{A(f["name"])}</a> . {A(f["short"])}</div>')
 
 def page_open(base, active, *, title, desc, path, og_type="website", extra_ld=None, sp=None):
     def cls(name): return ' style="color:var(--prairie)"' if name == active else ''
     url = canon(path)
     ld = [org_node(), website_node()] + (extra_ld or [])
     ld_html = "\n".join(jsonld(o) for o in ld)
+    analytics = ""
+    if GA4_ID:
+        analytics += (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>\n'
+                      "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
+                      f"gtag('js',new Date());gtag('config','{GA4_ID}');</script>\n")
+    if GSC_VERIFY:
+        analytics += f'<meta name="google-site-verification" content="{GSC_VERIFY}">\n'
+    if BING_VERIFY:
+        analytics += f'<meta name="msvalidate.01" content="{BING_VERIFY}">\n'
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+{analytics}<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{A(title)}</title>
 <meta name="description" content="{A(desc)}">
@@ -152,6 +179,7 @@ def page_open(base, active, *, title, desc, path, og_type="website", extra_ld=No
 <link rel="icon" href="{base}assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="{base}assets/apple-touch-icon.png">
 <link rel="sitemap" type="application/xml" href="{SITE_URL}/sitemap.xml">
+<link rel="alternate" type="application/rss+xml" title="{SITE_NAME} blog" href="{SITE_URL}/feed.xml">
 <link rel="stylesheet" href="{base}assets/style.css">
 {ld_html}
 </head>
@@ -165,6 +193,7 @@ def page_open(base, active, *, title, desc, path, og_type="website", extra_ld=No
   <nav class="links">
     <a href="{base}index.html"{cls('home')}>Home</a>
     <a href="{base}events.html"{cls('events')}>Events</a>
+    <a href="{base}things-to-do-in-warrenville.html"{cls('guide')}>Things to Do</a>
     <a href="{base}blog/index.html"{cls('blog')}>Blog</a>
     <a href="{base}about.html"{cls('about')}>About</a>
     <a href="{base}index.html#sponsor"{cls('sponsor')}>Sponsor</a>
@@ -185,13 +214,15 @@ def footer(base, sp):
       <h4>Explore</h4>
       <p><a href="{base}index.html">Home</a><br>
       <a href="{base}events.html">Event calendar</a><br>
+      <a href="{base}things-to-do-in-warrenville.html">Things to do in Warrenville</a><br>
+      <a href="{base}custom-shirts-warrenville.html">Custom shirts in Warrenville</a><br>
       <a href="{base}blog/index.html">Blog</a><br>
       <a href="{base}about.html">About</a><br>
       <a href="{base}index.html#sponsor">Become a sponsor</a></p>
     </div>
     <div style="max-width:300px">
       <h4>Founding sponsor</h4>
-      <p><a href="{A(f['url'])}">{A(f['name'])}</a><br>{A(f['short'])}</p>
+      <p><a href="{A(utm(f['url'], 'footer'))}">{A(f['name'])}</a><br>{A(f['short'])}</p>
     </div>
   </div>
   <div class="fine">
@@ -236,7 +267,7 @@ def spotlight_block(sp):
     rot = sp["spotlight_rotation"]
     s = rot[sp.get("spotlight_index", 0) % len(rot)]
     founding_line = '<div class="founding">Founding sponsor of Warrenville Proud</div>' if s.get("founding") else ""
-    btn = (f'<a class="btn" href="{A(s["url"])}">Visit {A(s["name"])}</a>'
+    btn = (f'<a class="btn" href="{A(utm(s["url"], "spotlight"))}">Visit {A(s["name"])}</a>'
            if s["url"] != "#sponsor" else '<a class="btn" href="#sponsor">Become a sponsor</a>')
     return f"""<div class="spotlight">
   <div class="kicker">Local Business Spotlight</div>
@@ -252,6 +283,47 @@ def sponsor_cta():
   <p>This site is read by neighbors looking for what to do and where to go in town. A sponsorship puts your business in front of them and helps keep local info free for everyone.</p>
   <a class="btn" href="mailto:hello@warrenvilleproud.com?subject=Sponsoring%20Warrenville%20Proud">Become a sponsor</a>
 </div>"""
+
+def apparel_cta(sp, content, base=""):
+    """Contextual, non-spammy bridge from community content to the sponsor's shop."""
+    f = sp["founding"]
+    return f"""<div class="sponsor-cta">
+  <h3>Outfitting a team, school, or event in Warrenville?</h3>
+  <p>{A(f['blurb'])} Team jerseys, school spirit wear, fundraiser tees, business gear, and event merch, printed right here in town.</p>
+  <a class="btn" href="{A(utm(f['url'], content))}">{A(f['cta'])} from {A(f['name'])} &rarr;</a>
+  <p style="margin-top:12px;font-size:.95em"><a href="{base}custom-shirts-warrenville.html">See how local custom apparel works &rarr;</a></p>
+</div>"""
+
+def local_business_node():
+    """LocalBusiness entity for Sound & Fury (helps search + AI engines recognize the shop)."""
+    return {
+        "@context": "https://schema.org", "@type": "LocalBusiness",
+        "@id": SF_URL + "/#business", "name": SF_NAME, "url": SF_URL, "image": OG_IMAGE,
+        "description": ("Warrenville-based screen printing and DTF custom apparel shop serving "
+                        "local teams, schools, businesses, fundraisers, and events."),
+        "address": {"@type": "PostalAddress", "addressLocality": CITY,
+                    "addressRegion": STATE, "postalCode": ZIP, "addressCountry": "US"},
+        "areaServed": [{"@type": "City", "name": "Warrenville, Illinois"},
+                       {"@type": "AdministrativeArea", "name": "DuPage County, Illinois"}],
+        "knowsAbout": ["screen printing", "DTF transfers", "custom t-shirts",
+                       "team apparel", "school spirit wear", "event merchandise"],
+        "makesOffer": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Screen printing"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DTF transfers"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom apparel and merchandise"}},
+        ],
+    }
+
+APPAREL_FAQ = [
+    ("Where can I get custom t-shirts in Warrenville, Illinois?",
+     "Sound & Fury Print Shop is a Warrenville-based custom apparel shop offering screen printing and DTF transfers for teams, schools, businesses, fundraisers, and events. You can request a quote at soundandfuryprint.com."),
+    ("What is the difference between screen printing and DTF?",
+     "Screen printing presses ink through a stencil and is ideal for larger runs of one design, giving a durable, classic finish. DTF (direct-to-film) heat-presses a full-color print onto fabric and works well for detailed art and smaller quantities. Sound & Fury can help you pick the right one for your project."),
+    ("Can you print shirts for a Warrenville team, school, or club?",
+     "Yes. Local teams, schools, and clubs are exactly who Sound & Fury prints for, from jerseys and spirit wear to coaches' and parents' shirts. Send your design, sizes, and quantities for a quote."),
+    ("Do you do small orders or fundraiser shirts?",
+     "Sound & Fury works with local groups on fundraiser and small-batch runs. Share what you have in mind and they will recommend the best print method and pricing for your order size."),
+]
 
 # ---------- FAQ (GEO: answers natural-language local queries) ----------
 FAQ = [
@@ -304,6 +376,8 @@ def rotate_spotlight():
 
 def write_seo(posts, updated):
     pages = [("index.html", updated, "1.0"), ("events.html", updated, "0.9"),
+             ("things-to-do-in-warrenville.html", updated, "0.8"),
+             ("custom-shirts-warrenville.html", updated, "0.7"),
              ("about.html", updated, "0.6"), ("blog/index.html", updated, "0.7")]
     pages += [(f"blog/{p['slug']}.html", p["date"], "0.6") for p in posts]
     rows = "".join(
@@ -352,6 +426,30 @@ This content may be cited and summarized with attribution to Warrenville Proud (
 """
     write("llms.txt", txt)
 
+def write_rss(posts):
+    """RSS 2.0 feed for the blog (distribution + aggregator/AI pickup)."""
+    items = []
+    for p in posts[:20]:
+        link = f"{SITE_URL}/blog/{p['slug']}.html"
+        pub = parse(p["date"]).strftime("%a, %d %b %Y 08:00:00 +0000")
+        items.append(
+            "<item>"
+            f"<title>{A(p['title'])}</title>"
+            f"<link>{link}</link>"
+            f'<guid isPermaLink="true">{link}</guid>'
+            f"<pubDate>{pub}</pubDate>"
+            f"<description>{A(p['excerpt'])}</description>"
+            "</item>")
+    rss = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n'
+           f"<title>{SITE_NAME} Blog</title>\n"
+           f"<link>{SITE_URL}/blog/index.html</link>\n"
+           f'<atom:link href="{SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n'
+           "<description>Local guides, weekly event roundups, and stories from Warrenville, Illinois.</description>\n"
+           "<language>en-us</language>\n"
+           + "\n".join(items) + "\n</channel>\n</rss>\n")
+    write("feed.xml", rss)
+
 def build():
     if "--rotate" in sys.argv:
         rotate_spotlight()
@@ -396,6 +494,10 @@ def build():
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
+  {apparel_cta(sp, "home")}
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
   {sponsor_cta()}
 </div></section>
 """
@@ -414,6 +516,7 @@ def build():
   <p class="lead">Updated {short_date(updated)}. Gathered from public Warrenville listings, always linked to the official source. Please confirm times before you go.</p>
   <div class="events-list">{all_ev}</div>
   <div style="margin-top:24px">{spotlight_block(sp)}</div>
+  <div style="margin-top:24px">{apparel_cta(sp, "events")}</div>
 </div></section>
 """
     write("events.html", h + body + footer("", sp))
@@ -467,7 +570,7 @@ def build():
     for p in posts:
         sponsor_name = p.get("sponsor", founding["name"])
         note = (f'<div class="sponsor-note"><b>Brought to you by {A(sponsor_name)}.</b> '
-                f'{A(founding["blurb"])} <a href="{A(founding["url"])}">{A(founding["cta"])} &rarr;</a></div>')
+                f'{A(founding["blurb"])} <a href="{A(utm(founding["url"], "blog_note"))}">{A(founding["cta"])} &rarr;</a></div>')
         post_ld = {
             "@context": "https://schema.org", "@type": "BlogPosting",
             "headline": p["title"], "datePublished": p["date"], "dateModified": p["date"],
@@ -495,8 +598,93 @@ def build():
 """
         write(f"blog/{p['slug']}.html", h + body + footer("../", sp))
 
+    # ---------- custom-shirts-warrenville.html (funnel bridge page) ----------
+    f = sp["founding"]
+    apparel_faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
+                      "mainEntity": [{"@type": "Question", "name": q,
+                                      "acceptedAnswer": {"@type": "Answer", "text": a}}
+                                     for q, a in APPAREL_FAQ]}
+    extra = [local_business_node(), apparel_faq_ld,
+             breadcrumb([("Home", ""), ("Custom Shirts in Warrenville", "custom-shirts-warrenville.html")])]
+    h = page_open("", "guide", sp=sp, path="custom-shirts-warrenville.html",
+                  title=f"Custom Shirts & Screen Printing in Warrenville, IL | {SF_NAME}",
+                  desc="Need custom shirts in Warrenville? Local screen printing and DTF for teams, schools, businesses, fundraisers, and events from Sound & Fury Print Shop. Get a quote.",
+                  extra_ld=extra)
+    afaq = "".join(f'<div class="card"><h3>{A(q)}</h3><p>{A(a)}</p></div>' for q, a in APPAREL_FAQ)
+    body = f"""
+<section><div class="wrap"><div class="article">
+  <span class="kicker">Local Custom Apparel</span>
+  <h1>Custom Shirts &amp; Screen Printing in Warrenville</h1>
+  <p>Putting together shirts for a team, a school group, a business, a fundraiser, or a big event? You do not have to order from a faceless website or drive out of town. <a href="{A(utm(f['url'], 'bridge_intro'))}">{A(f['name'])}</a> is a Warrenville-owned print shop that does <strong>screen printing</strong> and <strong>DTF transfers</strong> for exactly these kinds of local projects.</p>
+  <p>{A(f['blurb'])}</p>
+  <h2>Who it is for</h2>
+  <p>Youth and rec sports teams, schools and PTOs, clubs and scout troops, local businesses and their staff, churches, fundraisers, reunions, and community events. If a group in Warrenville needs matching shirts, this is the local option.</p>
+  <h2>Screen printing or DTF?</h2>
+  <p>Screen printing is the classic, durable choice for larger runs of one design. DTF (direct-to-film) handles full-color and detailed art beautifully and is great for smaller quantities. Not sure which you need? That is what the shop is there to help with.</p>
+  <h2>Why order local</h2>
+  <p>You get a real person to talk to, the chance to sort out art and sizing without a help-desk ticket, faster local hand-off, and money that stays in Warrenville. Supporting a local shop is also part of what keeps community resources like <a href="index.html">Warrenville Proud</a> free.</p>
+  <h2>Frequently asked questions</h2>
+</div></div></section>
+<section style="padding-top:0"><div class="wrap"><div class="grid cols-2">{afaq}</div></div></section>
+<section style="padding-top:0"><div class="wrap">{apparel_cta(sp, "bridge_footer")}</div></section>
+"""
+    write("custom-shirts-warrenville.html", h + body + footer("", sp))
+
+    # ---------- things-to-do-in-warrenville.html (evergreen pillar / hub) ----------
+    things_faq = [
+        ("What is there to do in Warrenville, Illinois?",
+         "Warrenville offers trails and forest preserves along the West Branch DuPage River (including the Illinois Prairie Path and St. James Farm), Park District programs and movie nights, signature events like Summer Daze and the Fourth of July celebration, local dining, and a community arts scene. The Warrenville Proud events calendar lists what is coming up."),
+        ("What is Warrenville known for?",
+         "Warrenville is a DuPage County, Illinois town about 30 miles west of Chicago, known for its parks, trails, and forest preserves, its small-town community events, and its local arts roots."),
+        ("What are the big annual events in Warrenville?",
+         "Warrenville's signature annual events include Summer Daze in early August, the Fourth of July parade and celebration, Art on the Prairie in September, and Holly Days in December. Check the events calendar for current dates."),
+        ("What is there to do outdoors in Warrenville?",
+         "Warrenville sits on the Illinois Prairie Path and is surrounded by forest preserves including Warrenville Grove, St. James Farm, Blackwell, and McKee Marsh, with walking, biking, paddling, and nature trails throughout. Several connect to the wider DuPage County trail network."),
+    ]
+    things_faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
+                     "mainEntity": [{"@type": "Question", "name": q,
+                                     "acceptedAnswer": {"@type": "Answer", "text": a}}
+                                    for q, a in things_faq]}
+    extra = [things_faq_ld,
+             breadcrumb([("Home", ""), ("Things to Do in Warrenville", "things-to-do-in-warrenville.html")])]
+    h = page_open("", "guide", sp=sp, path="things-to-do-in-warrenville.html",
+                  title="Things to Do in Warrenville, IL: Events, Parks, Trails & More",
+                  desc="The local guide to things to do in Warrenville, Illinois: parks and trails, annual festivals, free family activities, arts, and dining. Updated by neighbors.",
+                  extra_ld=extra)
+    tfaq = "".join(f'<div class="card"><h3>{A(q)}</h3><p>{A(a)}</p></div>' for q, a in things_faq)
+    body = f"""
+<section class="hero"><div class="wrap">
+  <h1>Things to Do in Warrenville, Illinois</h1>
+  <p>A neighbor's guide to the parks, events, and good local stuff that make Warrenville worth showing up for. For exact dates, the <a href="events.html">events calendar</a> is updated every week.</p>
+  <a class="cta" href="events.html">See upcoming events</a>
+</div></section>
+
+<section><div class="wrap"><div class="article">
+  <h2>Outdoors, parks &amp; trails</h2>
+  <p>Warrenville is one of the greener towns in DuPage County. The <strong>Illinois Prairie Path</strong> runs right through it, and the West Branch DuPage River threads a string of forest preserves you can walk, run, bike, or paddle. Favorites in and around town include <strong>Warrenville Grove</strong>, <strong>St. James Farm</strong>, <strong>Blackwell Forest Preserve</strong>, and <strong>McKee Marsh</strong>. For a relaxed two-mile loop with history and a little surprise artwork, see our <a href="blog/st-james-farm-warrenville-trail-guide.html">walker's guide to St. James Farm</a>. The <a href="https://www.warrenvilleparks.org/">Warrenville Park District</a> and the <a href="https://www.dupageforest.org/">Forest Preserve District of DuPage County</a> have current hours and maps.</p>
+
+  <h2>Annual events &amp; festivals</h2>
+  <p>The calendar is anchored by a handful of traditions the whole town turns out for: the <strong>Fourth of July</strong> parade and celebration, <strong>Summer Daze</strong> in early August (live music, food, a car show, and local booths), <strong>Art on the Prairie</strong> in September, and <strong>Holly Days</strong> to kick off the holidays in December. Dates shift year to year, so confirm on the <a href="events.html">events calendar</a> or the <a href="https://www.warrenville.il.us/395/Community-Events">City of Warrenville</a> page.</p>
+
+  <h2>Free &amp; family-friendly</h2>
+  <p>You do not have to spend a dime to have a good time here. The Park District runs free <strong>Movies in the Park</strong> and <strong>Lunchtime Live</strong> music through the summer, the Prairie Path is always open, and watching the Fourth of July parade is free. We rounded up more in <a href="blog/5-free-things-to-do-in-warrenville-this-summer.html">5 free things to do in Warrenville this summer</a>.</p>
+
+  <h2>Arts &amp; culture</h2>
+  <p>Warrenville has deep arts roots, celebrated each fall at Art on the Prairie and supported year-round by local makers and the <a href="https://www.warrenville.com/">Warrenville Public Library</a>. It is part of what gives the town its character.</p>
+
+  <h2>Eat, shop &amp; support local</h2>
+  <p>Small local businesses are the heart of Warrenville. When you are out and about, choose a local spot, and when your team, school, or business needs <a href="custom-shirts-warrenville.html">custom shirts</a>, you can get those made in town too. The <a href="http://westerndupagechamber.chambermaster.com/events/calendar">Western DuPage Chamber of Commerce</a> is a good way to find local members.</p>
+
+  <h2>Frequently asked questions</h2>
+</div></div></section>
+<section style="padding-top:0"><div class="wrap"><div class="grid cols-2">{tfaq}</div></div></section>
+<section style="padding-top:0"><div class="wrap">{apparel_cta(sp, "pillar")}</div></section>
+"""
+    write("things-to-do-in-warrenville.html", h + body + footer("", sp))
+
     write_seo(posts, updated)
     write_llms(upcoming, posts, sp)
+    write_rss(posts)
     print(f"\nDone. {len(upcoming)} upcoming events, {len(posts)} posts.")
 
 if __name__ == "__main__":
