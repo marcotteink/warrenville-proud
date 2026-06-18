@@ -1,0 +1,33 @@
+{
+  "founding": {
+    "name": "Sound & Fury Print Shop",
+    "url": "https://soundandfuryprint.com",
+    "short": "Warrenville's local screen printing & DTF shop",
+    "blurb": "Sound & Fury is a Warrenville-owned print shop doing screen printing, DTF transfers, and custom apparel for local teams, schools, businesses, and events. When you need shirts done right and done local, they are right here in town.",
+    "cta": "Get a quote"
+  },
+  "spotlight_rotation": [
+    {
+      "name": "Sound & Fury Print Shop",
+      "url": "https://soundandfuryprint.com",
+      "category": "Custom Apparel & Printing",
+      "blurb": "Founding sponsor of Warrenville Proud. Local screen printing and DTF for teams, schools, businesses, and events. Proudly printing Warrenville.",
+      "founding": true
+    },
+    {
+      "name": "Your Business Here",
+      "url": "#sponsor",
+      "category": "Open spotlight slot",
+      "blurb": "This spotlight rotates through Warrenville businesses that help keep this community resource free. Want your shop featured here? Become a sponsor.",
+      "founding": false
+    },
+    {
+      "name": "Your Business Here",
+      "url": "#sponsor",
+      "category": "Open spotlight slot",
+      "blurb": "Warrenville Proud is read by neighbors looking for what to do and where to go in town. Put your business in front of them.",
+      "founding": false
+    }
+  ],
+  "spotlight_index": 0
+}

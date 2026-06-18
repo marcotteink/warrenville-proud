@@ -1,0 +1,104 @@
+/* Warrenville Proud - shared styles. Civic, warm, prairie-town feel. Light mode. */
+:root{
+  --prairie:#2f6b3e; --prairie-dk:#234f2e; --prairie-bg:#eaf3ec;
+  --gold:#c98a1b; --gold-bg:#fbf2df;
+  --ink:#1f2a24; --muted:#5d6b62; --line:#e3e8e4; --bg:#fbfaf7; --card:#ffffff;
+  --sky:#2e6fa3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;}
+a{color:var(--prairie);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+/* sponsor ribbon */
+.ribbon{background:var(--prairie-dk);color:#fff;font-size:13.5px;text-align:center;padding:7px 12px}
+.ribbon a{color:#ffe7b3;font-weight:600}
+.ribbon a:hover{color:#fff}
+
+/* header / nav */
+header.site{background:var(--card);border-bottom:1px solid var(--line)}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+.brand{display:flex;flex-direction:column;line-height:1.15}
+.brand .name{font-size:22px;font-weight:800;color:var(--prairie);letter-spacing:-0.3px}
+.brand .tag{font-size:12px;color:var(--muted)}
+nav.links a{margin-left:18px;font-size:14.5px;color:var(--ink);font-weight:500}
+nav.links a:hover{color:var(--prairie);text-decoration:none}
+
+/* hero */
+.hero{background:linear-gradient(160deg,var(--prairie) 0%,var(--prairie-dk) 100%);color:#fff;padding:44px 0 40px}
+.hero h1{font-size:34px;margin:0 0 8px;letter-spacing:-0.5px}
+.hero p{font-size:17px;margin:0;max-width:640px;color:#e7f1e9}
+.hero .cta{margin-top:18px;display:inline-block;background:var(--gold);color:#3a2a08;font-weight:700;padding:11px 20px;border-radius:999px;font-size:14.5px}
+.hero .cta:hover{background:#e0a02c;text-decoration:none}
+
+/* sections */
+section{padding:34px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}
+.sec-head h2{font-size:23px;margin:0;letter-spacing:-0.3px}
+.sec-head a{font-size:14px;font-weight:600}
+.lead{color:var(--muted);font-size:15px;margin:-6px 0 18px}
+
+/* cards grid */
+.grid{display:grid;gap:16px}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column}
+.card h3{margin:0 0 6px;font-size:18px;line-height:1.25}
+.card .meta{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.card p{margin:0 0 12px;font-size:14px;color:#39463d}
+.card .more{margin-top:auto;font-size:13.5px;font-weight:600}
+
+/* event row */
+.events-list{display:flex;flex-direction:column;gap:10px}
+.event{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.event .when{flex:0 0 84px;text-align:center;background:var(--prairie-bg);border-radius:10px;padding:8px 4px;height:fit-content}
+.event .when .mo{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--prairie);font-weight:700}
+.event .when .day{font-size:24px;font-weight:800;color:var(--prairie-dk);line-height:1}
+.event .when .dow{font-size:11px;color:var(--muted)}
+.event .body h3{margin:0 0 3px;font-size:17px}
+.event .body .det{font-size:12.5px;color:var(--muted);margin-bottom:5px}
+.event .body p{margin:0 0 6px;font-size:13.5px;color:#39463d}
+.event .pill{display:inline-block;font-size:11px;font-weight:600;background:var(--gold-bg);color:var(--gold);padding:2px 9px;border-radius:999px;margin-bottom:5px}
+
+/* spotlight */
+.spotlight{background:var(--gold-bg);border:1px solid #efdcb0;border-radius:16px;padding:22px}
+.spotlight .kicker{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--gold)}
+.spotlight h3{margin:4px 0 6px;font-size:21px}
+.spotlight p{margin:0 0 12px;font-size:14.5px;color:#4a3d23}
+.spotlight .founding{font-size:12px;color:#7a6326;margin-top:10px}
+.btn{display:inline-block;background:var(--prairie);color:#fff;font-weight:600;padding:9px 16px;border-radius:999px;font-size:14px}
+.btn:hover{background:var(--prairie-dk);text-decoration:none}
+
+/* sponsor CTA strip */
+.sponsor-cta{background:var(--prairie-bg);border:1px dashed #b9d3bf;border-radius:14px;padding:20px;text-align:center}
+.sponsor-cta h3{margin:0 0 6px;font-size:19px}
+.sponsor-cta p{margin:0 0 12px;color:#3c5743;font-size:14.5px}
+
+/* article */
+.article{max-width:720px;margin:0 auto}
+.article .kicker{color:var(--prairie);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.article h1{font-size:30px;margin:6px 0 6px;letter-spacing:-0.4px;line-height:1.2}
+.article .byline{color:var(--muted);font-size:13.5px;margin-bottom:22px}
+.article p{font-size:16px;margin:0 0 16px}
+.article h2{font-size:21px;margin:26px 0 10px}
+.article ul{font-size:16px;margin:0 0 16px;padding-left:22px}
+.article li{margin-bottom:6px}
+.sponsor-note{background:var(--gold-bg);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;margin:26px 0 0;font-size:14px;color:#4a3d23}
+.sponsor-note b{color:#7a5a13}
+
+/* footer */
+footer.site{background:var(--prairie-dk);color:#d7e6da;margin-top:30px;padding:30px 0 26px;font-size:13.5px}
+footer.site a{color:#ffe7b3}
+footer.site .cols{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer.site h4{color:#fff;margin:0 0 8px;font-size:14px}
+footer.site .fine{margin-top:20px;padding-top:14px;border-top:1px solid #3a5a42;color:#9fc0a8;font-size:12px}
+
+@media(max-width:820px){
+  .grid.cols-3,.grid.cols-2{grid-template-columns:1fr}
+  .navbar{flex-direction:column;align-items:flex-start;gap:8px}
+  nav.links a{margin-left:0;margin-right:16px}
+  .hero h1{font-size:27px}
+}

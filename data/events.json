@@ -1,0 +1,108 @@
+{
+  "updated": "2026-06-17",
+  "note": "Events pulled from public Warrenville listings. Always links back to the official source. Refreshed weekly by the automation.",
+  "events": [
+    {
+      "date": "2026-06-18",
+      "title": "Summer Movies in the Park",
+      "time": "Dusk",
+      "location": "Warrenville Park District",
+      "category": "Family",
+      "source": "Warrenville Park District",
+      "url": "https://www.warrenvilleparks.org/events/",
+      "blurb": "Bring a blanket and the kids for a free outdoor movie under the stars. A laid-back summer-evening tradition in the park."
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Lunchtime Live",
+      "time": "Midday",
+      "location": "Downtown Warrenville",
+      "category": "Music",
+      "source": "Warrenville Park District",
+      "url": "https://www.warrenvilleparks.org/events/",
+      "blurb": "Live music on your lunch break. A weekly summer series that brings a little energy to the middle of the day downtown."
+    },
+    {
+      "date": "2026-07-03",
+      "enddate": "2026-07-04",
+      "title": "4th of July Celebration & Parade",
+      "time": "Parade July 3, festivities July 3 evening through July 4",
+      "location": "Downtown Warrenville & Cerny Park",
+      "category": "Festival",
+      "source": "Warrenville Friends of the 4th",
+      "url": "https://www.warrenville.il.us/395/Community-Events",
+      "blurb": "Two days of hometown celebration. The parade kicks things off on the 3rd, followed by an evening at Cerny Park and a full day of fun on the Fourth."
+    },
+    {
+      "date": "2026-07-04",
+      "title": "Firecracker 5K Run / Walk",
+      "time": "8:00 AM",
+      "location": "Warrenville Park District Recreation Center",
+      "category": "Sports",
+      "source": "Warrenville Park District",
+      "url": "https://www.warrenvilleparks.org/events/",
+      "blurb": "Start the Fourth with a scenic 5K along the Illinois Prairie Path and Warrenville Grove Forest Preserve. Runners, walkers, and strollers all welcome."
+    },
+    {
+      "date": "2026-07-11",
+      "title": "Unplug Illinois Picnic in the Park",
+      "time": "Afternoon",
+      "location": "Warrenville Park District",
+      "category": "Family",
+      "source": "Warrenville Park District",
+      "url": "https://www.warrenvilleparks.org/events/",
+      "blurb": "Put the screens down and come out for a community picnic. Games, food, and neighbors enjoying a summer afternoon together."
+    },
+    {
+      "date": "2026-07-16",
+      "title": "Summer Movies in the Park",
+      "time": "Dusk",
+      "location": "Warrenville Park District",
+      "category": "Family",
+      "source": "Warrenville Park District",
+      "url": "https://www.warrenvilleparks.org/events/",
+      "blurb": "The second outdoor movie night of the summer. Free, family-friendly, and a great excuse to spend an evening in the park."
+    },
+    {
+      "date": "2026-08-07",
+      "enddate": "2026-08-08",
+      "title": "Summer Daze",
+      "time": "Friday evening & all day Saturday",
+      "location": "Warrenville City Hall Complex, 28W701 Stafford Place",
+      "category": "Festival",
+      "source": "City of Warrenville / Western DuPage Chamber",
+      "url": "https://www.westerndupagechamber.com/index.php?m=7&s=47",
+      "blurb": "Warrenville's signature summer festival. Live music, food and drink, kids' rides and games, and local business booths. The weekend the whole town turns out."
+    },
+    {
+      "date": "2026-08-08",
+      "title": "Warrenville Car Show",
+      "time": "Saturday, during Summer Daze",
+      "location": "Warrenville City Hall Complex",
+      "category": "Community",
+      "source": "City of Warrenville",
+      "url": "https://www.warrenville.il.us/395/Community-Events",
+      "blurb": "Classic cars and showpieces roll into Summer Daze. A favorite for car lovers and anyone who likes a good Saturday stroll past some shine."
+    },
+    {
+      "date": "2026-09-12",
+      "title": "Art on the Prairie",
+      "time": "Two-day weekend event",
+      "location": "Warrenville",
+      "category": "Arts",
+      "source": "Warrenville Park District",
+      "url": "https://www.warrenville.il.us/395/Community-Events",
+      "blurb": "A weekend celebration of local and regional artists, music, and makers. Warrenville's nod to its identity as a city with deep arts roots."
+    },
+    {
+      "date": "2026-12-04",
+      "title": "Holly Days",
+      "time": "Friday evening",
+      "location": "Downtown Warrenville",
+      "category": "Holiday",
+      "source": "City of Warrenville",
+      "url": "https://www.warrenville.il.us/395/Community-Events",
+      "blurb": "The town's holiday kickoff. Lights, seasonal cheer, and a warm community gathering to start December the right way."
+    }
+  ]
+}
