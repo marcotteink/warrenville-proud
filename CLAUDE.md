@@ -1,5 +1,8 @@
 # Claude Memory: warrenville-proud
 
+> **LAUNCH STATUS (2026-06-17): NOT LIVE YET.** The site is built; the GitHub repo `marcotteink/warrenville-proud` exists but is EMPTY. To finish launching, read **`START_HERE.md`** in this folder and follow it: push the code, enable GitHub Pages, then set GoDaddy DNS. If you are Claude Code, help Matt complete those steps (he is new to this). After launch, this file is the project memory.
+
+
 Auto-loads for any Cowork session in this folder. Inherits the workspace-wide rules in `/Users/mattmarcotte/CLAUDE/CLAUDE.md` (no em dashes, plain language, ISO dates). This file adds site-specific context.
 
 ## What this is
@@ -36,3 +39,7 @@ Two scheduled tasks (Monday + Thursday) follow `WEEKLY_TASK.md`. Deploy/setup st
 ## Domains
 
 Main: `warrenvilleproud.com`. Redirect to it: `mywarrenville.com`, `visitwarrenville.com`, `warrenville-arts.com`, `mycity.ink`. Reserved for a future merch store: `warrenvilletees.com`.
+
+## SEO and GEO (added 2026-06-17)
+
+The generator bakes in search and AI-answer-engine optimization. Every page gets a unique title and meta description, canonical URL, Open Graph and Twitter cards, local geo meta, and JSON-LD structured data (Organization, WebSite, Event, BlogPosting, BreadcrumbList, FAQPage). Sound & Fury is represented as a sponsor entity in the structured data so it benefits too. `robots.txt` welcomes AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and more); `llms.txt` is a clean summary for LLMs; the About page carries an FAQ that answers natural-language local queries. When writing posts, use clear headings and concise, factual lead sentences so AI engines can extract answers. Brand images are made by `scripts/make_assets.py` (run only when branding changes).

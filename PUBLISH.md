@@ -1,43 +1,144 @@
-# Publishing Warrenville Proud (plain-English guide)
+# Launch Guide: warrenvilleproud.com
 
-You do not need to be a developer for this. It is a one-time setup. After it, the site updates itself.
+Plain-English, start to finish. You do not need to be a developer. Most of this is copy and paste. Do it once, and the site is live.
 
-## What this site is
+The site is a plain static website (HTML, CSS, and images), already built and SEO/GEO optimized. We will host it free on **GitHub Pages** and point your **GoDaddy** domain at it.
 
-A plain static website (just HTML and CSS files). Static sites are cheap and reliable: there is no server to maintain, and free hosting like GitHub Pages works great. The folder is already set up as a git repo, which is just a tracked history of the files.
+Folder on your Mac: `/Users/mattmarcotte/CLAUDE/warrenville-proud`
 
-## Option A: GitHub Pages (free, recommended)
+---
 
-This matches how your other sites (freegangsheetmaker.com, marcotte.ink) are hosted.
+## Step 0: start the repo clean (1 minute)
 
-1. **Make a GitHub repo.** On github.com, create a new empty repository named `warrenville-proud`. Do not add a README (the folder already has files).
-2. **Connect this folder to it.** In Cowork, ask: "Push the warrenville-proud folder to my new GitHub repo." It will run the git commands. Or by hand:
-   ```bash
-   cd /Users/mattmarcotte/CLAUDE/warrenville-proud
-   git remote add origin https://github.com/<your-username>/warrenville-proud.git
-   git branch -M main
-   git push -u origin main
-   ```
-3. **Turn on Pages.** In the repo on GitHub: Settings, then Pages. Set Source to "Deploy from a branch," branch `main`, folder `/ (root)`. Save. In a minute you get a temporary address like `https://<username>.github.io/warrenville-proud/`.
-4. **Point your domain.** Two steps:
-   - In the repo's Settings, Pages, "Custom domain," enter `warrenvilleproud.com` and save.
-   - In GoDaddy (where the domain lives), add the DNS records GitHub asks for: four `A` records pointing to GitHub's IPs (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) and one `CNAME` for `www` pointing to `<username>.github.io`. GitHub's Pages docs show the exact values.
-   - Back on GitHub, check "Enforce HTTPS" once it is available.
-   DNS can take a few minutes to a few hours to take effect.
+This folder was first set up inside Cowork's sandbox, which left a broken hidden `.git` folder that the sandbox cannot remove. Delete it on your Mac so we start fresh:
 
-## Option B: any static host
+- In Terminal: `cd "/Users/mattmarcotte/CLAUDE/warrenville-proud" && rm -rf .git`
+- Or in Finder: press `Cmd+Shift+.` to show hidden files, drag the `.git` folder to the Trash.
 
-The whole folder (minus `scripts/` and `data/`, though leaving them is harmless) can be dropped on Netlify, Cloudflare Pages, or DigitalOcean App Platform. Point the host at the repo and set the build output to the repo root. No build command is required to serve (the HTML is already generated); if the host supports a build step, you can run `python3 scripts/build_site.py`.
+Your actual site files are not touched by this.
 
-## Pointing the other 5 domains at this one
+---
 
-You own `mywarrenville.com`, `visitwarrenville.com`, `warrenville-arts.com`, and `mycity.ink`. Set each to **redirect** to `warrenvilleproud.com` (a "301 redirect" in GoDaddy's Forwarding settings). That way every name you own feeds the one real site, which is better for search ranking. Keep `warrenvilletees.com` aside for a future town-merch store that links from here.
+## Step 1: push the code (repo already created)
 
-## After setup: how updates happen
+Your empty repo is already created at **https://github.com/marcotteink/warrenville-proud** (same account as marcotte.ink). Just push to it from your Mac Terminal, exactly like marcotte.ink:
 
-- The two scheduled tasks (Monday and Thursday) refresh events and publish posts automatically, then push to GitHub, and Pages redeploys within a minute.
-- To change anything by hand, edit the files in `data/` and run `python3 scripts/build_site.py`, or just ask Cowork.
+```bash
+cd "/Users/mattmarcotte/CLAUDE/warrenville-proud"
+rm -rf .git                 # clear the broken sandbox repo
+git init
+git add -A
+git commit -m "Launch Warrenville Proud"
+git branch -M main
+git remote add origin https://github.com/marcotteink/warrenville-proud.git
+git push -u origin main
+```
 
-## Local preview (optional)
+After it pushes, tell Cowork and it will turn on GitHub Pages and connect the domain for you.
 
-Open `index.html` in a browser to see the site. Links and styles work locally. The only thing that needs the live host is the automatic deploy.
+---
+
+## Step 1 (alternate): get the code onto GitHub
+
+Pick the path that sounds easiest. Both end with your code in a GitHub repo named `warrenville-proud`.
+
+### Path A: GitHub Desktop (recommended, no terminal)
+
+1. Install **GitHub Desktop** (desktop.github.com) and sign in with your GitHub account.
+2. File, then "Add Local Repository," and choose the `warrenville-proud` folder. It will say it is not a git repository and offer to **create one**. Click "create a repository," then **Publish repository**.
+3. Uncheck "Keep this code private" if you want it public (Pages works either way; public is simplest). Publish.
+4. From now on, whenever the weekly content updates, open GitHub Desktop and click **Push origin** to put it live. One click.
+
+### Path B: terminal (git)
+
+```bash
+cd "/Users/mattmarcotte/CLAUDE/warrenville-proud"
+git init
+git add -A
+git commit -m "Launch Warrenville Proud"
+git branch -M main
+# create an empty repo named warrenville-proud on github.com first, then:
+git remote add origin https://github.com/<your-github-username>/warrenville-proud.git
+git push -u origin main
+```
+
+(If you have the GitHub CLI: `gh repo create warrenville-proud --public --source=. --push` does the create and push in one line.)
+
+---
+
+## Step 2: turn on GitHub Pages
+
+In your repo on github.com: **Settings, then Pages**.
+
+- Source: "Deploy from a branch."
+- Branch: `main`, folder: `/ (root)`. Save.
+- Under "Custom domain," enter `warrenvilleproud.com` and Save. (The repo already includes a `CNAME` file with this, so it may auto-fill.)
+- Leave "Enforce HTTPS" checked once it becomes available (a few minutes after DNS is set).
+
+You will get a temporary address like `https://<username>.github.io/warrenville-proud/` that works right away.
+
+---
+
+## Step 3: point the domain in GoDaddy (you do this part)
+
+In GoDaddy: **My Products, find warrenvilleproud.com, DNS, Manage DNS**.
+
+**Add these four A records** (Type A, Name `@`, each pointing to one IP, TTL default). If GoDaddy already has a parked `@` A record, edit/replace it.
+
+| Type | Name | Value |
+|------|------|-------|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+
+**Add one CNAME for www:**
+
+| Type | Name | Value |
+|------|------|-------|
+| CNAME | www | `<your-github-username>.github.io` |
+
+That is it. DNS can take a few minutes to a few hours. Then `warrenvilleproud.com` shows your site.
+
+(Optional, IPv6: you can also add four AAAA records on `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.)
+
+---
+
+## Step 4: redirect your other Warrenville domains
+
+So every name you own feeds the one real site (better for search). In GoDaddy, for each domain below: **DNS, then Forwarding**, forward to `https://warrenvilleproud.com`, type **Permanent (301)**, forwarding only (masking OFF).
+
+- mywarrenville.com
+- visitwarrenville.com
+- warrenville-arts.com
+- mycity.ink
+
+Keep **warrenvilletees.com** aside for the future town-merch store.
+
+---
+
+## Step 5: tell search engines and AI engines about it (10 minutes, big payoff)
+
+The site is already optimized (structured data, sitemap, AI-crawler access, an llms.txt summary). Two quick submissions help it get found faster:
+
+1. **Google Search Console** (search.google.com/search-console): add `warrenvilleproud.com`, verify (the easiest is a DNS TXT record GoDaddy will let you paste), then under Sitemaps submit `sitemap.xml`.
+2. **Bing Webmaster Tools** (bing.com/webmasters): add the site (you can import from Google), submit `sitemap.xml`. Bing also feeds ChatGPT search.
+
+Then get one or two local backlinks (ask the Western DuPage Chamber and the library to link to it, post it in local Facebook groups). Local backlinks are the single biggest local-SEO booster.
+
+---
+
+## How updates publish after launch
+
+The two scheduled tasks (Monday and Thursday) regenerate the calendar and blog in your folder automatically. To put each update live:
+
+- **Path A (GitHub Desktop):** click **Push origin**. GitHub Pages redeploys in about a minute.
+- **Path B (git):** the weekly task runs `git push` for you if the remote is connected, so it can be fully hands-off.
+
+Want true zero-click autopilot (the site updates and deploys itself with no involvement)? That is a worthwhile phase-2 upgrade using GitHub Actions plus an Anthropic API key stored in GitHub's encrypted secrets. Ask Cowork to "set up the Warrenville Proud autopilot workflow" when you are ready.
+
+---
+
+## What is in this repo
+
+Generated pages (`index.html`, `events.html`, `about.html`, `blog/`), the generator (`scripts/build_site.py`), brand images (`scripts/make_assets.py`), content data (`data/*.json`), SEO/GEO files (`sitemap.xml`, `robots.txt`, `llms.txt`, `CNAME`, `404.html`), and the automation runbook (`WEEKLY_TASK.md`). To change anything by hand, edit the files in `data/` and run `python3 scripts/build_site.py`, or just ask Cowork.

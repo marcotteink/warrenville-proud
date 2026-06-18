@@ -44,7 +44,7 @@ Use `web_fetch` and/or `WebSearch` to read these. The city calendar already incl
    - `sponsor`: `Sound & Fury Print Shop`
    - `body_html`: cover the events happening in the next 7 days in a warm, helpful tone, with `<h2>` per day or per event and links to sources. End by looking ahead to the next big thing. Genuinely useful first, promotional second.
 4. Build: `python3 scripts/build_site.py`
-5. Verify: no em dashes anywhere (`grep -rl $'—' .`), pages generated, links present.
+5. Verify: no em dashes anywhere (search the whole repo for any U+2014 character), pages generated, links present.
 6. Commit and push (see "Publishing" below).
 
 ## THURSDAY RUN: feature post + spotlight rotation
@@ -68,9 +68,12 @@ The site auto-deploys when changes are pushed to the connected GitHub repo (GitH
 
 ```bash
 cd /Users/mattmarcotte/CLAUDE/warrenville-proud
+rm -f .git/*.lock 2>/dev/null   # clear any stale sandbox lock
 git add -A
 git commit -m "Weekly update: <date> (<what changed>)"
 git push origin main   # only if a remote named origin exists
+# Optional: ping IndexNow so Bing/ChatGPT index the update fast
+curl -s "https://api.indexnow.org/indexnow?url=https://warrenvilleproud.com/&key=68c7972b0a66be6b99c4c407989d94cf" >/dev/null || true
 ```
 
 If `git push` reports no remote, the build and local commit still succeed; the site just is not connected yet. See `PUBLISH.md` for the one-time GitHub + domain setup. Do not treat a missing remote as a failure of the content work.
