@@ -176,7 +176,8 @@ def page_open(base, active, *, title, desc, path, og_type="website", extra_ld=No
 <meta name="twitter:title" content="{A(title)}">
 <meta name="twitter:description" content="{A(desc)}">
 <meta name="twitter:image" content="{OG_IMAGE}">
-<link rel="icon" href="{base}assets/favicon.png" type="image/png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="{base}assets/favicon.png" sizes="96x96">
 <link rel="apple-touch-icon" href="{base}assets/apple-touch-icon.png">
 <link rel="sitemap" type="application/xml" href="{SITE_URL}/sitemap.xml">
 <link rel="alternate" type="application/rss+xml" title="{SITE_NAME} blog" href="{SITE_URL}/feed.xml">

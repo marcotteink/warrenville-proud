@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
 Generate brand images for Warrenville Proud:
-  assets/og-image.png        1200x630 social/preview card
-  assets/favicon.png         64x64 browser tab icon
+  assets/og-image.png         1200x630 social/preview card
+  assets/favicon.png          96x96 browser tab icon (multiple of 48, per Google)
   assets/apple-touch-icon.png 180x180 home-screen icon
+  favicon.ico                 root multi-size icon (16/32/48) that Google and
+                              browsers look for at the site root
 
 Run once (re-run only if branding changes): python3 scripts/make_assets.py
 Requires Pillow.
@@ -57,7 +59,8 @@ def og():
     print("wrote assets/og-image.png")
 
 # ---------- icons (WP monogram) ----------
-def icon(size, name):
+def render_icon(size):
+    """Draw the WP monogram tile at a given size and return the image."""
     img = Image.new("RGB", (size, size), PRAIRIE)
     d = ImageDraw.Draw(img)
     d.rounded_rectangle([2, 2, size - 3, size - 3], radius=int(size * 0.22), fill=PRAIRIE)
@@ -68,10 +71,23 @@ def icon(size, name):
     d.text(((size - tw) / 2 - box[0], (size - th) / 2 - box[1]), text, font=fnt, fill=CREAM)
     # small gold underline
     d.rectangle([int(size * 0.3), int(size * 0.74), int(size * 0.7), int(size * 0.78)], fill=GOLD)
-    img.save(os.path.join(ASSETS, name), "PNG")
+    return img
+
+def icon(size, name):
+    render_icon(size).save(os.path.join(ASSETS, name), "PNG")
     print("wrote assets/" + name)
+
+def favicon_ico():
+    """Multi-resolution favicon.ico at the SITE ROOT. Google's favicon crawler and
+    browsers look for /favicon.ico first, so serving a correct one here is the most
+    reliable way to fix a wrong/stale favicon in search results."""
+    base = render_icon(256)
+    out = os.path.join(ROOT, "favicon.ico")
+    base.save(out, format="ICO", sizes=[(16, 16), (32, 32), (48, 48)])
+    print("wrote favicon.ico")
 
 if __name__ == "__main__":
     og()
-    icon(64, "favicon.png")
+    icon(96, "favicon.png")
     icon(180, "apple-touch-icon.png")
+    favicon_ico()
