@@ -1,37 +1,87 @@
 {
-  "updated": "2026-06-17",
+  "updated": "2026-06-22",
   "note": "Events pulled from public Warrenville listings. Always links back to the official source. Refreshed weekly by the automation.",
   "events": [
     {
-      "date": "2026-06-18",
-      "title": "Summer Movies in the Park",
-      "time": "Dusk",
-      "location": "Warrenville Park District",
+      "date": "2026-06-23",
+      "title": "Storytime at Cerny Park Pavilion",
+      "time": "10:00 AM",
+      "location": "Cerny Park Pavilion",
       "category": "Family",
-      "source": "Warrenville Park District",
-      "url": "https://www.warrenvilleparks.org/events/",
-      "blurb": "Bring a blanket and the kids for a free outdoor movie under the stars. A laid-back summer-evening tradition in the park."
+      "source": "City of Warrenville",
+      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3229",
+      "blurb": "A free all-ages storytime under the Cerny Park pavilion. A sweet, low-key way to start a summer Tuesday with the little ones. It runs most Tuesday mornings, so check the listing before you head over."
+    },
+    {
+      "date": "2026-06-23",
+      "title": "Turning 65: Navigating Medicare",
+      "time": "6:30 PM",
+      "location": "Warrenville Public Library",
+      "category": "Community",
+      "source": "Warrenville Public Library",
+      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3243",
+      "blurb": "A free evening session at the library that walks through the basics of signing up for Medicare. Handy if you or a family member is approaching 65 and wants the plain-English version. Registration may be required, so check with the library first."
+    },
+    {
+      "date": "2026-06-24",
+      "title": "Concerts on the Commons: Feel Good Party Band",
+      "time": "7:00 PM",
+      "location": "Bob Walters Commons (next to the Library)",
+      "category": "Music",
+      "source": "Warrenville Public Library",
+      "url": "https://www.warrenville.com/event/16427842",
+      "blurb": "The library's free Wednesday-evening concert series rolls on at Bob Walters Commons, with the Feel Good Party Band bringing the dance-floor energy. Pack a picnic and a lawn chair. Food trucks are usually on hand and the music starts around 7."
     },
     {
       "date": "2026-06-25",
-      "title": "Lunchtime Live",
-      "time": "Midday",
-      "location": "Downtown Warrenville",
+      "title": "Lunchtime Live with Ben Tatar Music",
+      "time": "11:30 AM",
+      "location": "Cerny Park Pavilion",
       "category": "Music",
       "source": "Warrenville Park District",
-      "url": "https://www.warrenvilleparks.org/events/",
-      "blurb": "Live music on your lunch break. A weekly summer series that brings a little energy to the middle of the day downtown."
+      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3202",
+      "blurb": "Bring your lunch to Cerny Park for a free midday set from Ben Tatar. This is the final Lunchtime Live of the season, so it is a nice excuse to step away from the desk and enjoy some live music before the series wraps."
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Book Bedazzling at the Library",
+      "time": "7:00 PM",
+      "location": "Warrenville Public Library",
+      "category": "Arts",
+      "source": "Warrenville Public Library",
+      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3244",
+      "blurb": "An after-hours craft night for adults at the library: turn a book into something all your own with a little sparkle. A fun, hands-on way to spend a summer evening. Space may be limited, so check on signing up."
+    },
+    {
+      "date": "2026-06-27",
+      "title": "80's Pop-Up Arcade at the Library",
+      "time": "1:00 - 3:00 PM",
+      "location": "Warrenville Public Library",
+      "category": "Family",
+      "source": "Warrenville Public Library",
+      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3245",
+      "blurb": "The library turns into a throwback arcade for an afternoon, with classic games for all ages. Free and open to families, it makes for an easy Saturday plan. Drop in anytime between 1 and 3."
+    },
+    {
+      "date": "2026-06-30",
+      "title": "Storytime at Cerny Park Pavilion",
+      "time": "10:00 AM",
+      "location": "Cerny Park Pavilion",
+      "category": "Family",
+      "source": "City of Warrenville",
+      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3230",
+      "blurb": "Another free all-ages storytime under the Cerny Park pavilion to start the week. A simple, sweet summer-morning tradition for families. Times can shift with the weather, so check the listing first."
     },
     {
       "date": "2026-07-03",
       "enddate": "2026-07-04",
       "title": "4th of July Celebration & Parade",
       "time": "Parade July 3, festivities July 3 evening through July 4",
-      "location": "Downtown Warrenville & Cerny Park",
+      "location": "Downtown Warrenville (parade) & Cerny Park",
       "category": "Festival",
       "source": "Warrenville Friends of the 4th",
-      "url": "https://www.warrenville.il.us/395/Community-Events",
-      "blurb": "Two days of hometown celebration. The parade kicks things off on the 3rd, followed by an evening at Cerny Park and a full day of fun on the Fourth."
+      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3248",
+      "blurb": "Two days of hometown celebration. The parade steps off on July 3, followed by festivities at Cerny Park that evening and all day on the Fourth, capped by a fireworks show. The 2026 celebration is centered at Cerny Park, so plan your spot."
     },
     {
       "date": "2026-07-04",
@@ -41,7 +91,7 @@
       "category": "Sports",
       "source": "Warrenville Park District",
       "url": "https://www.warrenvilleparks.org/events/",
-      "blurb": "Start the Fourth with a scenic 5K along the Illinois Prairie Path and Warrenville Grove Forest Preserve. Runners, walkers, and strollers all welcome."
+      "blurb": "Start the Fourth with a scenic 5K along the Illinois Prairie Path and Warrenville Grove Forest Preserve. Runners, walkers, and strollers are all welcome. Registration tends to fill up, so sign up early."
     },
     {
       "date": "2026-07-11",
@@ -51,17 +101,27 @@
       "category": "Family",
       "source": "Warrenville Park District",
       "url": "https://www.warrenvilleparks.org/events/",
-      "blurb": "Put the screens down and come out for a community picnic. Games, food, and neighbors enjoying a summer afternoon together."
+      "blurb": "Put the screens down and come out for a community picnic. Games, food, and neighbors enjoying a summer afternoon together. Confirm the time with the Park District before you go."
     },
     {
       "date": "2026-07-16",
       "title": "Summer Movies in the Park",
-      "time": "Dusk",
-      "location": "Warrenville Park District",
+      "time": "Dusk (seating opens 8:00 PM)",
+      "location": "Cerny Park",
       "category": "Family",
       "source": "Warrenville Park District",
       "url": "https://www.warrenvilleparks.org/events/",
-      "blurb": "The second outdoor movie night of the summer. Free, family-friendly, and a great excuse to spend an evening in the park."
+      "blurb": "The second outdoor movie night of the summer at Cerny Park. Free, family-friendly, and a great excuse to spend an evening under the stars. Bring a blanket and some snacks."
+    },
+    {
+      "date": "2026-08-04",
+      "title": "National Night Out Against Crime",
+      "time": "Evening",
+      "location": "Warrenville City Hall Complex",
+      "category": "Community",
+      "source": "City of Warrenville",
+      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3195",
+      "blurb": "Warrenville's police department hosts this free community night with food, kids' activities, touch-a-truck, music, and a chance to meet the neighbors and first responders who keep the town safe. A friendly summer-evening tradition."
     },
     {
       "date": "2026-08-07",
@@ -90,19 +150,9 @@
       "time": "Two-day weekend event",
       "location": "Warrenville",
       "category": "Arts",
-      "source": "Warrenville Park District",
-      "url": "https://www.warrenville.il.us/395/Community-Events",
-      "blurb": "A weekend celebration of local and regional artists, music, and makers. Warrenville's nod to its identity as a city with deep arts roots."
-    },
-    {
-      "date": "2026-12-04",
-      "title": "Holly Days",
-      "time": "Friday evening",
-      "location": "Downtown Warrenville",
-      "category": "Holiday",
       "source": "City of Warrenville",
       "url": "https://www.warrenville.il.us/395/Community-Events",
-      "blurb": "The town's holiday kickoff. Lights, seasonal cheer, and a warm community gathering to start December the right way."
+      "blurb": "A weekend celebration of local and regional artists, music, and makers, and the community's kickoff to fall. Warrenville's nod to its deep arts roots."
     }
   ]
 }
