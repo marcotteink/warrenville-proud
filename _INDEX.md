@@ -47,7 +47,7 @@ Built, SEO/GEO optimized, and previewing locally. Not yet deployed: needs the on
 
 ## Maintenance
 
-*Last updated: 2026-06-22 (Monday automation run: calendar refreshed to 15 upcoming events, new "Week Ahead" post added, 4 posts total). Prior note 2026-06-19 (workspace-janitor sweep). Indexed files on disk but unlisted: `things-to-do-in-warrenville.html`, `custom-shirts-warrenville.html`, `feed.xml`, and the IndexNow verification `.txt`. The hidden `.indexnow-key` is intentionally not listed (hidden config). Per-post blog HTML pages under `blog/` are generated artifacts and not listed individually.*
+*Last updated: 2026-06-25 (Thursday automation run: new Local Guide post "How to Do the Fourth of July in Warrenville" added, spotlight rotated to index 2, 5 posts total, 12 upcoming events). Prior note 2026-06-22 (Monday automation run: calendar refreshed to 15 upcoming events, new "Week Ahead" post added, 4 posts total). Prior note 2026-06-19 (workspace-janitor sweep). Indexed files on disk but unlisted: `things-to-do-in-warrenville.html`, `custom-shirts-warrenville.html`, `feed.xml`, and the IndexNow verification `.txt`. The hidden `.indexnow-key` is intentionally not listed (hidden config). Per-post blog HTML pages under `blog/` are generated artifacts and not listed individually.*
 
 ## Known issue
 
