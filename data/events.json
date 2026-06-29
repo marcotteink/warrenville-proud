@@ -1,67 +1,7 @@
 {
-  "updated": "2026-06-22",
+  "updated": "2026-06-29",
   "note": "Events pulled from public Warrenville listings. Always links back to the official source. Refreshed weekly by the automation.",
   "events": [
-    {
-      "date": "2026-06-23",
-      "title": "Storytime at Cerny Park Pavilion",
-      "time": "10:00 AM",
-      "location": "Cerny Park Pavilion",
-      "category": "Family",
-      "source": "City of Warrenville",
-      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3229",
-      "blurb": "A free all-ages storytime under the Cerny Park pavilion. A sweet, low-key way to start a summer Tuesday with the little ones. It runs most Tuesday mornings, so check the listing before you head over."
-    },
-    {
-      "date": "2026-06-23",
-      "title": "Turning 65: Navigating Medicare",
-      "time": "6:30 PM",
-      "location": "Warrenville Public Library",
-      "category": "Community",
-      "source": "Warrenville Public Library",
-      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3243",
-      "blurb": "A free evening session at the library that walks through the basics of signing up for Medicare. Handy if you or a family member is approaching 65 and wants the plain-English version. Registration may be required, so check with the library first."
-    },
-    {
-      "date": "2026-06-24",
-      "title": "Concerts on the Commons: Feel Good Party Band",
-      "time": "7:00 PM",
-      "location": "Bob Walters Commons (next to the Library)",
-      "category": "Music",
-      "source": "Warrenville Public Library",
-      "url": "https://www.warrenville.com/event/16427842",
-      "blurb": "The library's free Wednesday-evening concert series rolls on at Bob Walters Commons, with the Feel Good Party Band bringing the dance-floor energy. Pack a picnic and a lawn chair. Food trucks are usually on hand and the music starts around 7."
-    },
-    {
-      "date": "2026-06-25",
-      "title": "Lunchtime Live with Ben Tatar Music",
-      "time": "11:30 AM",
-      "location": "Cerny Park Pavilion",
-      "category": "Music",
-      "source": "Warrenville Park District",
-      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3202",
-      "blurb": "Bring your lunch to Cerny Park for a free midday set from Ben Tatar. This is the final Lunchtime Live of the season, so it is a nice excuse to step away from the desk and enjoy some live music before the series wraps."
-    },
-    {
-      "date": "2026-06-25",
-      "title": "Book Bedazzling at the Library",
-      "time": "7:00 PM",
-      "location": "Warrenville Public Library",
-      "category": "Arts",
-      "source": "Warrenville Public Library",
-      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3244",
-      "blurb": "An after-hours craft night for adults at the library: turn a book into something all your own with a little sparkle. A fun, hands-on way to spend a summer evening. Space may be limited, so check on signing up."
-    },
-    {
-      "date": "2026-06-27",
-      "title": "80's Pop-Up Arcade at the Library",
-      "time": "1:00 - 3:00 PM",
-      "location": "Warrenville Public Library",
-      "category": "Family",
-      "source": "Warrenville Public Library",
-      "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3245",
-      "blurb": "The library turns into a throwback arcade for an afternoon, with classic games for all ages. Free and open to families, it makes for an easy Saturday plan. Drop in anytime between 1 and 3."
-    },
     {
       "date": "2026-06-30",
       "title": "Storytime at Cerny Park Pavilion",
@@ -70,18 +10,18 @@
       "category": "Family",
       "source": "City of Warrenville",
       "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3230",
-      "blurb": "Another free all-ages storytime under the Cerny Park pavilion to start the week. A simple, sweet summer-morning tradition for families. Times can shift with the weather, so check the listing first."
+      "blurb": "A free all-ages storytime under the Cerny Park pavilion to start the week. A simple, sweet summer-morning tradition for families. Storytimes can move to the library or shift with the weather, so check the listing first."
     },
     {
       "date": "2026-07-03",
       "enddate": "2026-07-04",
-      "title": "4th of July Celebration & Parade",
-      "time": "Parade July 3, festivities July 3 evening through July 4",
-      "location": "Downtown Warrenville (parade) & Cerny Park",
+      "title": "4th of July Parade & Celebration",
+      "time": "Parade July 3 at 6:00 PM, Cerny Park festivities through July 4",
+      "location": "Parade from Warren Avenue & Tracy Place to Cerny Park",
       "category": "Festival",
       "source": "Warrenville Friends of the 4th",
       "url": "https://www.warrenville.il.us/Calendar.aspx?EID=3248",
-      "blurb": "Two days of hometown celebration. The parade steps off on July 3, followed by festivities at Cerny Park that evening and all day on the Fourth, capped by a fireworks show. The 2026 celebration is centered at Cerny Park, so plan your spot."
+      "blurb": "Warrenville's two-day hometown celebration. The parade steps off downtown at 6:00 on July 3 and rolls to Cerny Park for an evening of festivities (6:00 to 11:00 PM). The fun picks back up on the Fourth with a kids parade and live music from noon right up to the fireworks. The 2026 celebration is centered at Cerny Park, so plan your spot."
     },
     {
       "date": "2026-07-04",
@@ -94,6 +34,16 @@
       "blurb": "Start the Fourth with a scenic 5K along the Illinois Prairie Path and Warrenville Grove Forest Preserve. Runners, walkers, and strollers are all welcome. Registration tends to fill up, so sign up early."
     },
     {
+      "date": "2026-07-08",
+      "title": "Concerts on the Commons: Abby Kay Band",
+      "time": "7:00 - 8:30 PM",
+      "location": "Bob Walters Commons (next to the Library)",
+      "category": "Music",
+      "source": "Warrenville Public Library",
+      "url": "https://www.warrenville.com/event/16427846",
+      "blurb": "The library's free Wednesday-evening concert series returns to Bob Walters Commons after the holiday week, with the Abby Kay Band on the bill. Pack a picnic and a lawn chair (no alcohol, please), and a food truck is usually on hand."
+    },
+    {
       "date": "2026-07-11",
       "title": "Unplug Illinois Picnic in the Park",
       "time": "Afternoon",
@@ -104,6 +54,16 @@
       "blurb": "Put the screens down and come out for a community picnic. Games, food, and neighbors enjoying a summer afternoon together. Confirm the time with the Park District before you go."
     },
     {
+      "date": "2026-07-15",
+      "title": "Concerts on the Commons: Billy Elton",
+      "time": "7:00 - 8:30 PM",
+      "location": "Bob Walters Commons (next to the Library)",
+      "category": "Music",
+      "source": "Western DuPage Chamber",
+      "url": "http://westerndupagechamber.chambermaster.com/events/details/concerts-on-the-commons-billy-elton-12530",
+      "blurb": "A tribute night at the free library concert series, with Billy Elton bringing the Elton John and Billy Joel songbook to Bob Walters Commons. Bring a chair and a picnic and settle in for the evening."
+    },
+    {
       "date": "2026-07-16",
       "title": "Summer Movies in the Park",
       "time": "Dusk (seating opens 8:00 PM)",
@@ -111,7 +71,27 @@
       "category": "Family",
       "source": "Warrenville Park District",
       "url": "https://www.warrenvilleparks.org/events/",
-      "blurb": "The second outdoor movie night of the summer at Cerny Park. Free, family-friendly, and a great excuse to spend an evening under the stars. Bring a blanket and some snacks."
+      "blurb": "An outdoor movie night under the stars at Cerny Park. Free, family-friendly, and a great excuse to spread out a blanket with some snacks. Confirm the title and start time with the Park District."
+    },
+    {
+      "date": "2026-07-22",
+      "title": "Concerts on the Commons: Latin Swing Factor",
+      "time": "7:00 - 8:30 PM",
+      "location": "Bob Walters Commons (next to the Library)",
+      "category": "Music",
+      "source": "Western DuPage Chamber",
+      "url": "http://westerndupagechamber.chambermaster.com/events/details/concerts-on-the-commons-latin-swing-factor-12531",
+      "blurb": "Latin Swing Factor brings a lively mix of Latin rhythms and swing to the library's free Wednesday concert on Bob Walters Commons. A fun one to dance to on a summer evening."
+    },
+    {
+      "date": "2026-07-29",
+      "title": "Concerts on the Commons: Beyond the Blonde",
+      "time": "7:00 - 8:30 PM",
+      "location": "Bob Walters Commons (next to the Library)",
+      "category": "Music",
+      "source": "Western DuPage Chamber",
+      "url": "http://westerndupagechamber.chambermaster.com/events/details/concerts-on-the-commons-beyond-the-blonde-12532",
+      "blurb": "The free Concerts on the Commons series rolls on with Beyond the Blonde at Bob Walters Commons. Pack a picnic, grab a lawn chair, and enjoy live music next to the library."
     },
     {
       "date": "2026-08-04",
